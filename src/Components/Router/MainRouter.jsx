@@ -3,12 +3,14 @@ import Root from "../Root/Root";
 import Home from "../Home/Home";
 import ListedBook from "../ListedBook/ListedBook";
 import PagesToRead from "../PagesToRead/PagesToRead";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 const MainRouter = () => {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
           path: "/",
