@@ -9,13 +9,13 @@ const Books = () => {
     <div className="pt-20">
       <h2 className="font-bold text-4xl text-center">Books</h2>
 
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         {books.map((book) => (
           <div
             key={book.bookId}
             className="card p-6 border border-slate-200 mt-10"
           >
-            <figure className="bg-slate-100 rounded-xl py-12">
+            <figure className="bg-gray-50 rounded-xl py-12">
               <img
                 src={book.image}
                 alt="books"
@@ -24,12 +24,14 @@ const Books = () => {
             </figure>
             <div className="">
               <div className="pt-5 flex flex-row gap-3">
-                <button className="text-[#23BE0A] font-medium bg-gray-100 px-3 py-1 rounded-full">
-                  Young Adult{" "}
-                </button>
-                <button className="text-[#23BE0A] font-medium bg-gray-100 px-3 py-1 rounded-full">
-                  Identity
-                </button>
+                {book.tags.map((tag, idx) => (
+                  <button
+                    key={idx}
+                    className="text-[#23BE0A] font-medium bg-green-100 px-3 py-1 rounded-full"
+                  >
+                    {tag}
+                  </button>
+                ))}
               </div>
               <div className="border-dashed border-b border-slate-400 pb-4">
                 <h2 className="card-title pt-5">{book.bookName}</h2>
