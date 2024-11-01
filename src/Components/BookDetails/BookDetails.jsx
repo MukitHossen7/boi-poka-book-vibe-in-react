@@ -1,15 +1,24 @@
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import {
+  setReadListData,
+  setWishListData,
+} from "../../utilites/localStroageDB";
 
 const BookDetails = () => {
   const booksData = useLoaderData();
-  const params = useParams();
-  const id = parseInt(params.bookId);
+  const { bookId } = useParams();
+  const id = parseInt(bookId);
   const data = booksData.find((data) => data.bookId === id);
-  console.log(data);
-
   const navigate = useNavigate();
   const handleBackHomePage = () => {
     navigate(-1);
+  };
+
+  const handleReadList = (id) => {
+    setReadListData(id);
+  };
+  const handleWishList = (id) => {
+    setWishListData(id);
   };
   return (
     <div className="w-11/12 mx-auto pt-10">
@@ -73,10 +82,16 @@ const BookDetails = () => {
               </div>
             </div>
             <div className="mt-14 flex gap-4">
-              <button className="btn btn-outline text-black px-10 text-lg">
+              <button
+                onClick={() => handleReadList(bookId)}
+                className="btn btn-outline text-black px-10 text-lg"
+              >
                 Read
               </button>
-              <button className="btn btn-info text-white font-bold px-10 ">
+              <button
+                onClick={() => handleWishList(bookId)}
+                className="btn btn-info text-white font-bold px-10 "
+              >
                 Wishlist
               </button>
             </div>

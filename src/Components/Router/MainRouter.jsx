@@ -20,6 +20,7 @@ const MainRouter = () => {
         {
           path: "/listBooks",
           element: <ListedBook></ListedBook>,
+          loader: () => fetch("booksData.json"),
         },
         {
           path: "/pagesRead",
