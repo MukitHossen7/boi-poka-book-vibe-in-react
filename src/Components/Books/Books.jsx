@@ -2,9 +2,11 @@
 import { useContext } from "react";
 import { BooksContext } from "../Root/Root";
 import { CiStar } from "react-icons/ci";
+import { Link } from "react-router-dom";
+
 const Books = () => {
   const { books } = useContext(BooksContext);
-  console.log(books.length);
+
   return (
     <div className="pt-20">
       <h2 className="font-bold text-4xl text-center">Books</h2>
@@ -22,7 +24,7 @@ const Books = () => {
                 className="h-48  w-48 object-cover rounded-xl"
               />
             </figure>
-            <div className="">
+            <div className=" flex flex-col justify-center">
               <div className="pt-5 flex flex-row gap-3">
                 {book.tags.map((tag, idx) => (
                   <button
@@ -47,6 +49,11 @@ const Books = () => {
                   <CiStar className="text-gray-800 text-xl" />
                 </div>
               </div>
+              <Link to={`/bookDetails/${book.bookId}`}>
+                <button className="btn btn-outline btn-accent text-center mt-5">
+                  View Details
+                </button>
+              </Link>
             </div>
           </div>
         ))}
